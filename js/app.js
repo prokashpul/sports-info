@@ -38,7 +38,7 @@ const playerDataDisplay = (data) => {
         // play name change
         const play = () => {
             if (player.strSport === "Soccer") {
-                return "Footbal"
+                return "Football"
             } else {
                 return player.strSport;
             }
@@ -53,7 +53,7 @@ const playerDataDisplay = (data) => {
                     </div>
                     <div class="card-footer d-flex justify-content-between align-items-center">
                         <small class="text-info">${play()?play():""}</small>
-                        <small  class="btn btn-info btn-sm text-light">Learn more..</small>
+                        <small  class="btn btn-info btn-sm text-light" data-bs-toggle="modal" data-bs-target="#staticBackdrop" onclick="singlePlayerId(${player.idPlayer})">Learn more..</small>
 
                     </div>
                 </div>
@@ -61,4 +61,32 @@ const playerDataDisplay = (data) => {
         players.appendChild(div);
     })
 
+}
+
+
+
+// single player id call
+const singlePlayerId = (singleId) => {
+    singlePlayer(singleId)
+}
+
+// single data load
+
+const singlePlayer = (playerId) => {
+    const url = `https://www.thesportsdb.com/api/v1/json/2/lookupplayer.php?id=${playerId}`;
+    fetch(url)
+        .then(res => {
+            if (res.status >= 200 && res.status <= 299) {
+                return res.json();
+            } else {
+                throw Error(res.statusText);
+            }
+        })
+        .then(data => singlePlayerDiplay(data))
+        .catch(err => console.log(err.statusText))
+}
+
+// single playar display
+const singlePlayerDiplay = (data) => {
+    console.log(data)
 }

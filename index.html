@@ -14,7 +14,7 @@
 
 <body>
     <!--============ header area============ -->
-    <header class="text-center">
+    <header class="text-center mt-4">
         <h2 class="text-info">All Players Details</h2>
         <!-- search option -->
         <div class="d-flex justify-content-center my-4">
@@ -30,7 +30,22 @@
         <div class="row row-cols-1 row-cols-md-4 g-4" id="player-result">
         </div>
     </main>
+    <!-- Modal -->
+    <div class="modal fade " id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content  bg-info">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="img/blankimg.jpg" class="rounded-circle bg-info" alt="" height="100" width="100">
+                    <h5>Name</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic error saepe perferendis accusantium consequatur quod ipsa, tenetur perspiciatis temporibus vero! Labore nam et cupiditate consequuntur optio debitis praesentium odit quisquam.</p>
+                </div>
 
+            </div>
+        </div>
+    </div>
 
 
     <!-- ================script link ==================== -->
