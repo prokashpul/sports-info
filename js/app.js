@@ -64,10 +64,18 @@ const playerDataDisplay = (data) => {
 }
 
 
+// pageload 
+const pageToggle = (dispaly) => {
+    const singlePlayerView = document.getElementById('single-player');
+    singlePlayerView.style.display = dispaly;
+}
+
 
 // single player id call
 const singlePlayerId = (singleId) => {
+    pageToggle("none");
     singlePlayer(singleId)
+
 }
 
 // single data load
@@ -88,5 +96,26 @@ const singlePlayer = (playerId) => {
 
 // single playar display
 const singlePlayerDiplay = (data) => {
-    console.log(data)
+    console.log(data.players[0])
+    const singlePlayerView = document.getElementById('single-player');
+    const div = document.createElement("div")
+    singlePlayerView.innerHTML = "";
+    pageToggle("block");
+    div.innerHTML = `
+                <div class="modal-content text-light  bg-info">
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn-close m-1" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img src="${data.players[0].strThumb?data.players[0].strThumb:"img/blankimg.jpg"}" class="rounded-circle bg-info mb-2" alt="" height="100" width="100">
+                    <h5>${data.players[0].strPlayer?data.players[0].strPlayer:""}</h5>
+                    <p>Nationality: <em class="fw-bold text-danger"> ${data.players[0].strNationality?data.players[0].strNationality:""}</em></p>
+                    <p>Gender: <em class="fw-bold text-danger"> ${data.players[0].strGender?data.players[0].strGender:""}</em></p>
+                    <p>${data.players[0].strDescriptionEN?data.players[0].strDescriptionEN:""}</p>
+                    </div>
+
+                </div>
+          `
+    singlePlayerView.appendChild(div)
+
 }
